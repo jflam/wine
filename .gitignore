@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 data/data.csv
+data/index.bin
+data/index.bin.dat
