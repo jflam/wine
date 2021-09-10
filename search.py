@@ -16,8 +16,6 @@ model = SentenceTransformer("distilbert-base-uncased")
 print(f"LOADING dataset from ./data/wine.dat sqlite file...")
 with sql.connect("./data/wine.db") as c:
     df = pd.read_sql("select * from wine", c)
-
-print(df.head())
 #%%
 query = "I would like an inexpensive wine to serve at parties"
 
@@ -26,7 +24,8 @@ ids, distances = index.knnQuery(query_embeddings, k=20)
 matches = []
 
 for i, j in zip(ids, distances):
-    print((f"NAME: {df.winery.values[i]} {df.title.values[i]} ({df.country.values[i]})\n"
+    print((f"NAME: {df.winery.values[i]} {df.title.values[i]} "
+           f"({df.country.values[i]})\n"
            f"REVIEW: {df.description.values[i]}\n"
            f"RANK: {df.points.values[i]} "
            f"DISTANCE: {j:.2f}"))
