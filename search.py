@@ -25,7 +25,8 @@ start = time.process_time()
 query_embeddings = model.encode(query, convert_to_tensor=True).cpu()
 ids, distances = index.knnQuery(query_embeddings, k=20)
 end = time.process_time()
-print(f"SEARCHED {df.shape[0]} reviews of {df.title.nunique()} wines from {df.winery.nunique()} wineries in {end-start:.2f} seconds\n")
+print(f"SEARCHED {df.shape[0]} reviews of {df.title.nunique()} wines "
+      f"from {df.winery.nunique()} wineries in {end-start:.2f} seconds\n")
 
 matches = []
 for i, j in zip(ids, distances):
