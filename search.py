@@ -38,7 +38,8 @@ def search(df, query: str) -> None:
             f"DISTANCE: {j:.2f}"))
 
 # %%
-search(df, "shiraz fruity plum")
+search(df, "lots of tannins leading to a harsh, puckery feel in the mouth")
+# search(df, "shiraz fruity plum")
 # search(df, "fruity chardonnay with cherry flavors")
 # search(df, "sweet citrus chardonnay")
 # search(df, "dessert wine")
