@@ -4,5 +4,5 @@
     "extensions": ["ms-python.python", 
                    "ms-python.vscode-pylance", 
                    "ms-azuretools.vscode-docker"],
-    "runArgs": ["--gpus=all"],
+    "runArgs": ["--gpus=all", "--ipc=host"],
 }
