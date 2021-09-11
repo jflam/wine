@@ -37,7 +37,7 @@ import time
 from sentence_transformers import SentenceTransformer
 
 #%%
-print("RETRIEVING dataset from sqlite...")
+print(f"DOWNLOADING {C.SENTENCE_TRANSFORMER_MODEL_NAME} model...")
 model = SentenceTransformer(C.SENTENCE_TRANSFORMER_MODEL_NAME)
 with sql.connect(C.SQLITE_DATASET) as c:
     df = pd.read_sql("select * from wine", c)
