@@ -1,0 +1,4 @@
+{
+    "requires_gpu": true,
+    "base_container_image": "nvcr.io/nvidia/pytorch:21.08-py3",
+}
