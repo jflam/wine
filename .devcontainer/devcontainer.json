@@ -1,8 +1,15 @@
+
 {
+    "containerUser": "root",
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=/home/ezuser/src/wine,target=/workspace,type=bind,consistency=cached",
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+    ],
+    "runArgs": [
+        "--gpus=all",
+        "--ipc=host",
+    ],
     "dockerFile": "./Dockerfile",
-    "forwardPorts": [8888],
-    "extensions": ["ms-python.python", 
-                   "ms-python.vscode-pylance", 
-                   "ms-azuretools.vscode-docker"],
-    "runArgs": ["--gpus=all", "--ipc=host"],
 }
