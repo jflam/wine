@@ -1,3 +1,4 @@
+#%%
 import constants as C
 import os
 import pandas as pd
@@ -28,7 +29,6 @@ if not os.path.isfile(C.SQLITE_DATASET):
 if (os.path.isfile(C.NMS_INDEX1) and 
     os.path.isfile(C.C.NMS_INDEX2)):
     print("INDEX files already exist. Nothing done.")
-    exit(0)
 
 #%% 
 import nmslib
