@@ -131,3 +131,7 @@ dmypy.json
 data/data.csv
 data/index.bin
 data/index.bin.dat
+
+# Local cached model
+model
+.vscode
