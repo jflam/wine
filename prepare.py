@@ -1,5 +1,5 @@
 #%%
-import constants as C
+import build.constants as C
 import os
 import pandas as pd
 import sqlite3 as sql
@@ -27,7 +27,7 @@ if not os.path.isfile(C.SQLITE_DATASET):
 
 # Creates a new index from the wine reviews dataset 
 if (os.path.isfile(C.NMS_INDEX1) and 
-    os.path.isfile(C.C.NMS_INDEX2)):
+    os.path.isfile(C.NMS_INDEX2)):
     print("INDEX files already exist. Nothing done.")
 
 #%% 

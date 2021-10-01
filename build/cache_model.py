@@ -8,11 +8,12 @@ from sentence_transformers import SentenceTransformer
 def cache_model(model_name):
     """Loads model from Huggingface model hub"""
     try:
-        if os.path.exists(C.LOCAL_MODEL_PATH):
-            model = SentenceTransformer(C.LOCAL_MODEL_PATH)
+        model_path = os.path.expanduser(C.LOCAL_MODEL_PATH)
+        if os.path.exists(model_path):
+            model = SentenceTransformer(model_path)
         else:
             model = SentenceTransformer(model_name)
-            model.save('./model')
+            model.save(model_path)
     except Exception as e:
         raise(e)
 

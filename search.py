@@ -1,5 +1,5 @@
 #%%
-import constants as C
+import build.constants as C
 import nmslib
 import pandas as pd
 import sqlite3 as sql
