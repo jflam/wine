@@ -11,5 +11,5 @@
         "--gpus=all",
         "--ipc=host",
     ],
-    "dockerFile": "./Dockerfile",
+    "dockerFile": "../build/Dockerfile",
 }
