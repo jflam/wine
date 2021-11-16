@@ -1,7 +1,7 @@
 
 FROM nvcr.io/nvidia/pytorch:21.08-py3
 
-RUN useradd -r -u 1000 -g video,docker,sudo jlam
+RUN useradd -r -u 1000 jlam
 USER jlam
 WORKDIR /home/jlam
 
