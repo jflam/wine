@@ -1,6 +1,6 @@
 # wine
 
-## Experiments in building personal search engines
+# Experiments in building personal search engines
 
 The original inspiration for this work is this Toward Data Science
 [article](https://towardsdatascience.com/the-auto-sommelier-how-to-implement-huggingface-transformers-and-build-a-search-engine-9e0f401b1bda).
@@ -12,7 +12,7 @@ I've been interested in search engines for quite a while now and have built
 some rudimentary search engines from scratch in Python. This repo contains
 experiments in building search engines using more modern techniques.
 
-## Sentence-Transformers
+# Sentence-Transformers
 
 The main documentation for [sentence transformers](https://www.sbert.net/).
 One of the key things that it powers is [semantic search](https://www.sbert.net/examples/applications/semantic-search/README.html)
@@ -21,7 +21,6 @@ The models described in the page for semantic search differ based on their
 applications. Symmetric cases are where the length of the query text and the
 retrieval text are similar, and [these models perform
 well](https://www.sbert.net/docs/pretrained_models.html#sentence-embedding-models).
-
 
 In asymmetric cases where the length of the query is different from the length
 of the text retrieved, [these models perform
@@ -39,3 +38,39 @@ started as a 100,000 question/answer dataset from Bing, which has since been
 expanded to a 1,000,000 question/answer dataset. These datasets have been
 used extensively in academic research and the linked page above contains 
 leaderboards for progress in different text retrieval tasks.
+
+# Description of the code
+
+1. This is a search engine for wine reviews built using a database of 100K
+   reviews.
+2. It takes each review and computes, using a transformer model, a vector that
+   represents that review. That vector contains 768 elements (numbers) in it.
+3. It uses huggingface and a pre-trained transformer model to do so:
+   `msmarco-distilbert-base-v4`. Here is a description of it:
+   [sentence-transformers/msmarco-distilbert-base-v4 · Hugging
+   Face](https://huggingface.co/sentence-transformers/msmarco-distilbert-base-v4)
+4. It only takes a two lines of code to download and use the pre-trained model
+   using the huggingface library (see the `cache-model.py` file). These two
+   lines of code will download and cache the pre-trained model in the Docker
+   container image file.
+
+```
+model = SentenceTransformer(model_name)
+model.save(model_path)
+```
+
+5. The `prepare.py` script takes a vector of reviews and converts them into
+   embeddings. It reads the list of reviews into a pandas dataframe and passes
+   the column containing the review text to the model to train. It takes 
+   approximately 5 minutes to compute the embeddings from 100K reviews on an
+   RTX 2080 GPU.
+6. It uses another library, `nmslib` (non-metric space library) to store the
+   computed embeddings and search the computed embeddings for the nearest
+   neighbor match using the cosine similarity algorithm.
+7. The `search.ipynb` notebook lets the user enter a query and call the
+   `search` function. The search function uses the
+   `msmarco-distilbert-base-v4` model to compute an embedding for the user's
+   query, and then passes the embedding vector to the `nmslib` library to
+   return the top 20 results that match that query. Those results are indexes
+   into the original dataframe and we use the indexes to retrieve the original
+   review text and title to show the user.
