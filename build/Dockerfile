@@ -1,6 +1,10 @@
 
 FROM nvcr.io/nvidia/pytorch:21.08-py3
 
+RUN useradd -r -u 1000 -g video,docker,sudo jlam
+USER jlam
+WORKDIR /home/jlam
+
 COPY requirements.txt /tmp/requirements.txt
 COPY constants.py /tmp/constants.py
 COPY cache_model.py /tmp/cache_model.py
