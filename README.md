@@ -66,7 +66,8 @@ model.save(model_path)
    RTX 2080 GPU.
 6. It uses another library, `nmslib` (non-metric space library) to store the
    computed embeddings and search the computed embeddings for the nearest
-   neighbor match using the cosine similarity algorithm.
+   neighbor match using the [cosine
+   similarity](https://en.wikipedia.org/wiki/Cosine_similarity) algorithm.
 7. The `search.ipynb` notebook lets the user enter a query and call the
    `search` function. The search function uses the
    `msmarco-distilbert-base-v4` model to compute an embedding for the user's
