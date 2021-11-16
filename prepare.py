@@ -44,7 +44,8 @@ if (not os.path.isfile(C.NMS_INDEX1) or
         df = pd.read_sql("select * from wine", c)
 
     # This takes about five minutes to run on an RTX 2080 with 8GB GDDR6
-    # or an Azure NV6 VM with an M80 GPU
+    # or an Azure NV6 VM with an M80 GPU. It only takes 3 minutes on an 
+    # Azure NC6_v3 VM with a V100 GPU with 16GB of VRAM
     print(f"GENERATING embeddings from {df.shape[0]} wine descriptions")
     start = time.process_time()
     embeddings = model.encode(df["description"], convert_to_tensor=True)
