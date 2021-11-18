@@ -8,7 +8,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
@@ -127,10 +126,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-data/data.csv
-data/index.bin
-data/index.bin.dat
 
 # Local cached model
 model
