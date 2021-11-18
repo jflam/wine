@@ -44,7 +44,7 @@ if (not os.path.isfile(C.NMS_INDEX1) or
         df = pd.read_sql("select * from wine", c)
 
     # This takes about five minutes to run on an RTX 2080 with 8GB GDDR6
-    # or an Azure NV6 VM with an M80 GPU. It only takes 3 minutes on an 
+    # or an Azure NV6 VM with an M80 GPU. It only takes 86 seconds on an 
     # Azure NC6_v3 VM with a V100 GPU with 16GB of VRAM
     print(f"GENERATING embeddings from {df.shape[0]} wine descriptions")
     start = time.process_time()
@@ -66,3 +66,5 @@ if (not os.path.isfile(C.NMS_INDEX1) or
 else:
     print(f"NOTHING DONE - indices {C.NMS_INDEX1} and {C.NMS_INDEX2} "
           f"already exist")
+
+# %%
